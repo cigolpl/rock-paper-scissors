@@ -1,0 +1,108 @@
+<head>
+  <title>bootstrap</title>
+</head>
+
+<body>
+
+  <!--{{> hello}}-->
+</body>
+
+<template name="hello">
+
+
+
+<div class="container">
+
+
+
+    <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Project name</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/about">about</a></li>
+                <li><a href="#">kasa 0</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {{> loginButtons}}
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+
+        <div class="col-lg-12">
+
+            Ilosc gier: {{ matchesStatCount }}
+            {{# if game }}
+
+                <div class="col-lg-6">
+
+                    <div class="btn-group" role="group">
+                    {{# unless session "madeChoice"}}
+                        <button type="button" class="btn btn-default choice" id="weapon-2">Papier</button>
+                        <button type="button" class="btn btn-default choice" id="weapon-3">Nożyce</button>
+                        <button type="button" class="btn btn-default choice" id="weapon-1">Kamień</button>
+                    {{ else }}
+                        Wybralem {{ session "madeChoice"}}
+                    {{/unless}}
+
+                    <!--{{ currentUser._id }}-->
+
+                    matchResult {{ matchResult }}
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    Tutaj jest przeciwnik {{ user.profile.name }}<br />
+                    {{# if opponentStatus }}
+                        DECIDED!
+                    {{else}}
+                        THINKING...
+                    {{/if}}
+                </div>
+
+            {{else}}
+
+                {{#if finding}}
+                    <p><a class="btn btn-lg btn-success" href="#" role="button">Szukanie przeciwnika..</a></p>
+                    {{{ countdown }}}
+                {{else}}
+                <p><a class="btn btn-lg btn-success" id="start-game" href="#" role="button">Rozpocznij gre</a></p>
+                {{/if}}
+
+
+
+
+            {{/if}}
+
+
+
+        </div>
+
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; Company 2014</p>
+    </footer>
+
+</div> <!-- /container -->
+
+
+
+</template>
+
+<template name="about">
+about
+</template>
